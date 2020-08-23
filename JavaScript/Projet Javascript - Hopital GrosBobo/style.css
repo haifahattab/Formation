@@ -9,6 +9,7 @@ h1 {
 
 p {
     display: none;
+    padding-top: 100px;
 }
 
 img {
@@ -44,10 +45,6 @@ img {
     background-color: rgba(151, 148, 148, 0.8);
     top: 47%;
     left: 30%;
-}
-
-.btn:active {
-    background-color: red;
 }
 
 #hanche {

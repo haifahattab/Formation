@@ -1,0 +1,65 @@
+/* Put the label in inline-block to be able to aligne them*/
+
+.ck_label {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 100px;
+    cursor: pointer;
+}
+
+
+/*hide checkbox buttons*/
+
+.btn_ch1 {
+    display: none;
+}
+
+
+/* Put all the span in position absolute versus label*/
+
+span {
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    border-radius: 20px;
+}
+
+#non {
+    background-color: red;
+    font-size: 50px;
+    text-align: right;
+    transition: all 0.5s ease;
+}
+
+
+/* Initial span style with opacity 0 to make it invisible*/
+
+#oui {
+    background-color: rgb(79, 218, 79);
+    font-size: 50px;
+    opacity: 0;
+    text-align: left;
+    transition: all 0.5s ease;
+}
+
+#round {
+    width: 70px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 1;
+    transition: all 0.5s ease;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+/*on checked the round moves to the left and oui will be visible*/
+
+.btn_ch1:checked~#round {
+    left: 120px;
+}
+
+.btn_ch1:checked~#oui {
+    opacity: 1;
+}

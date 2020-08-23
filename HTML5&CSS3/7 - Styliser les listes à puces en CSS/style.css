@@ -1,0 +1,47 @@
+/** CSS à écrire */
+.list1 {
+    list-style: none;
+}
+.list1 li:before { 
+    content: "";
+    border-color: transparent #111;
+    border-style: solid;
+    border-width: 7px 0 7px 10px;
+    display: block;
+    right: 1em;
+    top: 0.9em;
+    position: relative;
+}
+.list2{
+    list-style: none;
+}
+.list2 li::before{
+    content: "";
+    width: 5px;
+    height: 5px;
+    border: 1px solid rgb(24, 37, 219);
+    border-width: 3px;
+    display: block;
+    right: 1em;
+    top: 0.9em;
+    position: relative;
+    transform: rotate(45deg);
+}
+.list3 li{
+    list-style: none;
+    counter-increment: count;
+}
+.list3 li::before{
+    content:counter(count);
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    position: relative;
+    right: 1.3em;
+    top: 1.1em;
+}

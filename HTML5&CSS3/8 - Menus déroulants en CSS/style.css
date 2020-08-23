@@ -1,0 +1,48 @@
+ul{
+    list-style: none;
+}
+.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.menu li{
+    margin-right: 20px;
+    font-size: 30px;
+}
+.submenu{
+    position: absolute;
+    padding-left: 0;
+    margin-right: 0;
+    margin-top: 5px;
+    overflow: hidden;
+    max-height: 0;
+    transition: 1s max-height 0.3s;
+}
+.submenu li{
+    color: white;
+    background-color: rgb(177, 165, 165);
+    margin-bottom: 1px;
+    width: 90px;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+.menu> li:hover .submenu{
+    max-height: 100px;
+}
+.submenu li:hover{
+    background-color: rgb(104, 176, 235);
+}
+a{
+    text-decoration: none;
+}
+.menu>li>a{
+    color: rgb(168, 160, 160);
+}
+.menu > li:hover{
+    border-bottom: 4px solid rgb(35, 146, 236);             
+}
+.submenu>li>a{
+    color: white;
+}

@@ -1,0 +1,24 @@
+.article>p {
+    margin: 20px;
+}
+
+
+/*select all p brothers of h2*/
+
+h2~p {
+    border: 1px solid black;
+}
+
+
+/*select all p brothers direct of h2*/
+
+h2+p {
+    background-color: yellow;
+}
+
+
+/*select all p child of the li*/
+
+li>p {
+    color: springgreen;
+}

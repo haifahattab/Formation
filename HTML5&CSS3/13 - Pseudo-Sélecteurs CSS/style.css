@@ -1,0 +1,69 @@
+a:hover {
+    background-color: #7E3661;
+    text-decoration: none;
+    color: white;
+}
+
+a:visited {
+    color: #FCB941;
+}
+
+a:active {
+    font-size: 1.5em;
+}
+
+
+/*capitalize all letters*/
+
+caption {
+    font-size: 1.5em;
+    text-transform: capitalize;
+}
+
+
+/*Delete the table border*/
+
+table {
+    border: none;
+}
+
+
+/*select all td brothers of th*/
+
+th td {
+    padding: 10px;
+    text-align: center;
+}
+
+thead>tr:first-child th:nth-child(2) {
+    font-size: 2em;
+    color: blue;
+}
+
+tbody>tr:nth-child(odd) td {
+    background-color: #FCB941;
+}
+
+tr:nth-child(even) td {
+    background-color: #F1654C;
+}
+
+tr:nth-child(odd) td:first-child {
+    background-color: #7E3661;
+    color: white;
+}
+
+tr:nth-child(even) td:first-child {
+    background-color: #888888;
+    color: white;
+}
+
+tr:nth-child(odd) td:last-child {
+    background-color: #8870FF;
+    color: white;
+}
+
+th[rowspan]:last-child {
+    border-top: none;
+    border-right: none;
+}

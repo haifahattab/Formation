@@ -1,0 +1,30 @@
+body{
+    font-family: helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    margin: 10px;
+    font-size: 1em;
+}
+h1{
+    font: Arial, Helvetica, serif 1.5em bold;
+    margin-bottom: 1.5em;
+    color: #454545;
+}
+p{
+    color: #7a7a7a;
+    margin: 0 0 1.5em 20px;
+}
+blockquote{
+    font: italic 1.2em;
+    margin: 0 80px 20px 60px;
+    background-color: #e7f2fa;
+    color: #444;
+    border-left: #8870FF 5px solid;
+    padding: 15px
+}
+em{
+    text-align: right;
+}
+a{
+    color: #8870FF;
+    margin-left: 20px;
+}

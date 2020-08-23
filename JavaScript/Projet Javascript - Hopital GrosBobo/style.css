@@ -1,0 +1,81 @@
+body {
+    text-align: center;
+    padding-top: 5%;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+p {
+    display: none;
+}
+
+img {
+    position: relative;
+    width: 40%;
+}
+
+#epaul {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgba(151, 148, 148, 0.8);
+    top: 18%;
+    left: 34%;
+}
+
+#bras {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgba(151, 148, 148, 0.8);
+    top: 35%;
+    left: 60%;
+}
+
+#main {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgba(151, 148, 148, 0.8);
+    top: 47%;
+    left: 30%;
+}
+
+.btn:active {
+    background-color: red;
+}
+
+#hanche {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgba(151, 148, 148, 0.8);
+    top: 47%;
+    left: 52%;
+}
+
+#jenou {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgba(151, 148, 148, 0.8);
+    top: 70%;
+    left: 50%;
+}
+
+#pied {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgba(151, 148, 148, 0.8);
+    top: 90%;
+    left: 50%;
+}

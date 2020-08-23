@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exo 8 JS</title>
+    <script>
+        produits = prompt("Entrez un programme!")
+        a = produits.toLowerCase()
+        switch (a) {
+            case "tomate":
+                console.log("Bon pour la santé et vegan");
+                break;
+            case "oeuf":
+                console.log("D/'origine animale même si ça n/'est pas directement leur viande");
+                break;
+            case "lait":
+                console.log("D/'origine animale même si ça n/'est pas directement leur viande");
+                break;
+            case "tofu":
+                console.log("Issu du soja donc vegan mais sa culture intensive n'est pas top niveau environnement");
+                break;
+            case "miel":
+                console.log("Abeille = animal = non vegan");
+                break;
+            case "foie gras":
+                console.log("Pire aliment non vegan");
+                break;
+            default:
+                console.log("Désolé, nous n/'avons pas de " + produits + ".");
+        }
+        console.log("Souhaitez-vous autre chose?");
+    </script>
+</head>
+
+<body>
+    <h1>Exercice 8 : You get what you switch</h1>
+    <p>Le switch</p>
+</body>
+
+</html>

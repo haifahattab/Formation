@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exo 10 JS</title>
+    <script>
+        function nombrealeatoire(x, y) {
+            return Math.floor(Math.random() * (y - x + 1)) + x
+        }
+        var Nbre = nombrealeatoire(1, 100);
+        console.log(Nbre)
+        var getNbre
+        var i = 0
+        while (getNbre != Nbre) {
+            i += 1
+            getNbre = prompt("Devinez le nombre secret")
+            if (getNbre < Nbre) {
+                console.log("ouuuups le nombre est inférieure au nombre secret!! Réssaye encore une fois")
+                getNbre = prompt("ouuuups le nombre est inférieure au nombre secret!! Réssaye encore une fois")
+            } else if (getNbre > Nbre) {
+                console.log("ouuups le nombre est supérieure au nombre secret!! Réssaye encore une fois")
+                getNbre = prompt("ouuups le nombre est supérieure au nombre secret!! Réssaye encore une fois")
+            } else {
+                console.log("Bravo vous avez trouver le nombre secret est = " + Nbre + " aprés " + i + " coup")
+                alert("Bravo vous avez trouver le nombre secret est = " + Nbre + " aprés " + i + " coup")
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Exercice 10 : Récapitulons</h1>
+    <p>Le jeu du plus ou moins</p>
+</body>
+
+</html>

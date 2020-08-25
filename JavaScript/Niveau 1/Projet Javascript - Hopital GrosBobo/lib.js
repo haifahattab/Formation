@@ -1,11 +1,11 @@
 //Afficher le paragraphe à partir son id et faire appel à la fonction deleteALLP.
 function showContent(pNumber) {
-    deleteAllP(pNumber);
+    deleteAllP();
     var p = document.getElementById('text' + pNumber)
     p.style.display = "block"
 }
 //Cacher le paragraphe à partir son id.
-function deleteAllP(pNumber) {
+function deleteAllP() {
     var hideP = document.getElementsByTagName("p");
     for (var i = 0; i < hideP.length; i++) {
         hideP.item(i).style.display = "none";

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script>
+        function isInt() {
+            let n
+                //verifier si le nombre saisie est un entier
+            while ((!(/^-?[0-9]+$/).test(n))) {
+                n = prompt('Tapez un nombre:');
+            }
+            n = parseInt(n, 10)
+            return n
+        }
+        let x = isInt();
+        //boucles imbriquées pour recup
+        for (let i = 1; i <= x; i++) {
+            document.write("Table de multiplication de " + i + " :" + "<br>")
+
+            for (let j = 0; j <= 10; j++) {
+                let result = i * j
+                document.write(i + " * " + j + " = " + result + "<br>")
+
+            }
+        }
+    </script>
+</body>
+
+</html>

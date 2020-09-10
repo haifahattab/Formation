@@ -19,7 +19,7 @@ function jeu(id) {
         //choix aléatoire du tableau tab
         joueur_2_ordi = tab[Math.floor(Math.random() * tab.length)].id
     partie.textContent = "L'ordinateur à jouer **" + joueur_2_ordi + "** Le joueur à jouer **" + joueur_1_user + "**"
-    let resultat;
+    let result;
     if ((joueur_1_user == "ciseaux" && joueur_2_ordi == "feuille") ||
         (joueur_1_user == "feuille" && joueur_2_ordi == "pierre") ||
         (joueur_1_user == "pierre" && joueur_2_ordi == "ciseaux")) {

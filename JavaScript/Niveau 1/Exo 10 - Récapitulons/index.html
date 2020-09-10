@@ -11,8 +11,10 @@
         var Nbre = nombrealeatoire(1, 100);
         console.log(Nbre)
         var getNbre
-        var i = 0
-        while (getNbre != Nbre) {
+        var i = 0,
+            t = 0;
+        while ((getNbre != Nbre) && (t <= 5)) {
+            t += 1
             i += 1
             getNbre = prompt("Devinez le nombre secret")
             if (getNbre < Nbre) {

@@ -3,6 +3,7 @@ function showContent(pNumber) {
     deleteAllP();
     var p = document.getElementById('text' + pNumber)
     p.style.display = "block"
+
 }
 //Cacher le paragraphe à partir son id.
 function deleteAllP() {
@@ -10,13 +11,9 @@ function deleteAllP() {
     for (var i = 0; i < hideP.length; i++) {
         hideP.item(i).style.display = "none";
     }
+    $('button').css('background', 'rgba(151, 148, 148, 0.8)')
 }
 //Evenement sur le bouton avec Jquery.
-$('button').on({
-    click: function() {
-        $(this).css('backgroundColor', 'red');
-    },
-    mouseleave: function() {
-        $(this).css('backgroundColor', 'rgba(151, 148, 148, 0.8)');
-    }
+$('button').click(function() {
+    $(this).css('background', 'red');
 });

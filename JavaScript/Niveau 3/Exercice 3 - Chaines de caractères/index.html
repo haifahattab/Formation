@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //bouton 1
+        let newBtn = document.createElement("button")
+        newBtn.id = 'btn'
+        newBtn.innerHTML = 'Tester'
+        newBtn.style.width = '100px'
+        document.body.appendChild(newBtn)
+
+        let body = newBtn.parentNode;
+        str = document.createElement('p');
+        document.body.appendChild(str)
+        body.insertBefore(str, newBtn)
+
+        let p = document.createElement('p')
+        body.appendChild(p)
+
+        //bouton 2
+        let newBtn2 = document.createElement("button")
+        newBtn2.id = 'btn2'
+        newBtn2.innerHTML = 'Tester'
+        newBtn2.style.width = '100px'
+        document.body.appendChild(newBtn2)
+
+        str2 = document.createElement('p');
+        document.body.appendChild(str2)
+        body = newBtn2.parentNode;
+        body.insertBefore(str2, newBtn2)
+
+        let p2 = document.createElement('p')
+        document.body.appendChild(p2)
+
+        //bouton 3
+        let newBtn3 = document.createElement("button")
+        newBtn3.id = 'btn3'
+        newBtn3.innerHTML = 'Tester'
+        newBtn3.style.width = '100px'
+        document.body.appendChild(newBtn3)
+
+        str3 = document.createElement('p');
+        document.body.appendChild(str3)
+        body = newBtn3.parentNode;
+        body.insertBefore(str3, newBtn3)
+
+        let p3 = document.createElement('p')
+        document.body.appendChild(p3)
+
+        //bouton 4
+        let newBtn4 = document.createElement("button")
+        newBtn4.id = 'btn4'
+        newBtn4.innerHTML = 'Tester'
+        newBtn4.style.width = '100px'
+        document.body.appendChild(newBtn4)
+
+        p4 = document.createElement('p');
+        document.body.appendChild(p4)
+        body = newBtn4.parentNode;
+        body.insertBefore(p4, newBtn4)
+
+        let p5 = document.createElement('p')
+        document.body.appendChild(p5)
+
+        //bouton 5
+        let newBtn5 = document.createElement("button")
+        newBtn5.id = 'btn4'
+        newBtn5.innerHTML = 'Tester'
+        newBtn5.style.width = '100px'
+        document.body.appendChild(newBtn5)
+
+        p6 = document.createElement('p');
+        document.body.appendChild(p6)
+        body = newBtn5.parentNode;
+        body.insertBefore(p6, newBtn5)
+
+        let p7 = document.createElement('p')
+        document.body.appendChild(p7)
+        const tab = ['a', 'b', 'c', 'd', 'A', 'B', 'C', 'D'];
+
+        // Verifier si la chaine commence par les lettres de tab
+        newBtn.addEventListener('click', function() {
+            test1('Bonjour')
+        })
+
+        function test1(texte) {
+            str.textContent = texte
+            for (let i = 0; i < tab.length; i++) {
+                if ((texte[0] == tab[i])) {
+                    p.textContent = texte + " chaine valide commence par " + tab[i]
+                }
+            }
+        }
+        // verifier si la chaine contient @
+        newBtn2.addEventListener('click', () => {
+            isTrueOrFalse('mail@yahoo.com')
+        })
+
+        function isTrueOrFalse(chaine2) {
+            str2.textContent = chaine2
+            chaine2.includes('@') ? p2.textContent = chaine2 + ' chaine valide' : p2.textContent = chaine2 + ' chaine non valide'
+
+        }
+        // verifier si la chaine contient un nombre
+        newBtn3.addEventListener('click', () => {
+            hasAnumber('Hello10')
+
+        })
+
+        function hasAnumber(chaine3) {
+            str3.textContent = chaine3;
+            [/\d/.test(chaine3)] ? p3.textContent = chaine3 + ' contient un nombre': p3.textContent = chaine3 + ' ne contient pas un nombre'
+        }
+        // remplacer un nombre par *
+        newBtn4.addEventListener('click', () => {
+            replace('Test54')
+        })
+
+        let newStr = ""
+
+        function replace(chaine4) {
+            p4.textContent = chaine4
+            for (let i = 0; i < chaine4.length; i++) {
+                if (!isNaN(chaine4[i])) {
+                    newStr += '*'
+                } else {
+                    newStr += chaine4[i]
+                }
+                p5.textContent = newStr
+            }
+        }
+
+        // fonction verifier mail qui fait appelle à toutes les fonctions
+        newBtn5.addEventListener('click', () => {
+            verifier_mail('bouboun@yahoo.com')
+        })
+
+        function verifier_mail(mail) {
+            let regex = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/
+            p6.textContent = mail
+            if (regex.test(mail)) {
+                p7.textContent = "adresse mail valide"
+            } else {
+                p7.textContent = "mail non valide"
+            }
+        }
+    </script>
+</body>
+
+</html>

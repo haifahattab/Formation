@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .carre {
+            border: 2px solid black;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .rond {
+            width: 20px;
+            height: 20px;
+            border: 2px solid black;
+            border-radius: 100px;
+        }
+        
+        .losange {
+            width: 20px;
+            height: 20px;
+            border: 2px solid black;
+            transform: rotate(45deg);
+        }
+        
+        table {
+            width: 700px;
+            height: 700px;
+            margin: auto;
+            border-spacing: 30px 30px;
+        }
+        
+        .btn {
+            margin-left: 40%;
+        }
+        
+        button {
+            width: 100px;
+            height: 50px;
+            background-color: rgb(54, 105, 201);
+            color: whitesmoke;
+        }
+        
+        .violet {
+            background-color: rgb(231, 133, 231);
+        }
+        
+        .white {
+            background-color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <td class="carre"></td>
+            <td class="rond"></td>
+            <td class="rond"></td>
+            <td class="rond"></td>
+            <td class="rond"></td>
+        </tr>
+        <tr>
+            <td class="rond"></td>
+            <td class="carre"></td>
+            <td class="rond"></td>
+            <td class="rond"></td>
+            <td class="rond"></td>
+        </tr>
+        <tr>
+            <td class="rond"></td>
+            <td class="rond"></td>
+            <td class="losange"></td>
+            <td class="rond"></td>
+            <td class="rond"></td>
+        </tr>
+        <tr>
+            <td class="rond"></td>
+            <td class="rond"></td>
+            <td class="rond"></td>
+            <td class="carre"></td>
+            <td class="rond"></td>
+        </tr>
+        <tr>
+            <td class="rond"></td>
+            <td class="rond"></td>
+            <td class="rond"></td>
+            <td class="rond"></td>
+            <td class="carre"></td>
+        </tr>
+    </table>
+    <div class="btn">
+        <button id="remplir">Remplir</button>
+        <button id="vider">Vider</button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>
+        $('#remplir').click(function() {
+            $('td').addClass('violet'); //appliquer la classe violet dans tout les colonnes
+            $('td').removeClass('white'); //supprimer la classe white de tout les colonnes
+
+        });
+        $('#vider').click(function() {
+            $('td').addClass('white');
+            $('td').removeClass('violet')
+        })
+        $('.rond').click(function() {
+            $(this).toggleClass('violet')
+        });
+
+        $('.carre').click(function() {
+
+            //  let sta = $(this).hasClass('violet')
+            //  $('tr>td').each(function() {
+            // if (sta) {
+            //    sta = $(this).removeClass('violet');
+            //} else {
+            $(this).addClass('violet');
+            $(this).siblings().addClass('violet');
+            // }
+            // })
+        });
+
+        $('.losange').click(function() {
+            let col = $('tr>td:nth-child(3)'); //sibler les 3émes colonnes de tous les lignes
+            $(this).siblings().toggleClass('violet'); // sibler les fréres de losange
+            $(col).toggleClass('violet');
+        })
+    </script>
+</body>
+
+</html>

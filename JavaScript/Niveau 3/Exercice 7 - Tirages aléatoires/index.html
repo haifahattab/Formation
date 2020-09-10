@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            padding: 20px;
+            margin: 10px;
+            background-color: brown;
+            color: white;
+        }
+        
+        #tab {
+            border: 2px solid black;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1" class="btn" onclick="ajoutNom()">Ajouter nom</button>
+    <button id="bnt2" class="btn" onclick="nomaleatoir()">Tirage au sort</button>
+    <table id="tab"></table>
+    <script>
+        let tName = [],
+            tab = document.querySelector('#tab');
+
+        function ajoutNom() { //ajouter un nom
+            tab.style.display = "block"
+            let nom = prompt("donner un nom"),
+                newrow = tab.insertRow(-1),
+                newcel = newrow.insertCell(-1);
+            tName.push(nom);
+
+            for (let i = 0; i < tName.length; i++) {
+                newcel.textContent = nom
+            }
+        }
+
+        function nomaleatoir() { //tirer un gagnant
+            let namealé = tName[Math.floor(Math.random() * tName.length)]
+            alert("le gangant est : ****** " + namealé + " ******")
+        }
+    </script>
+</body>
+
+</html>

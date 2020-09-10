@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const birthday = new Date("Mar 18, 2021")
+        let today = new Date(),
+            td = today.getTime(),
+            br = birthday.getTime(),
+            daybirth = br - td
+        daybirth = Math.floor(daybirth / 86400000)
+        document.write("<p>Nous somme le " + today + "</p>")
+        document.write("<p>Votre anniversaire aura lieu le " + birthday + "</p>")
+        document.write("<p style=\"padding:30px 0;font-weight:bold;\">Il reste " + daybirth + " jours avant votre anniversaire</p>")
+    </script>
+</body>
+
+</html>

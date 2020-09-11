@@ -115,15 +115,9 @@
 
         $('.carre').click(function() {
 
-            //  let sta = $(this).hasClass('violet')
-            //  $('tr>td').each(function() {
-            // if (sta) {
-            //    sta = $(this).removeClass('violet');
-            //} else {
             $(this).addClass('violet');
-            $(this).siblings().addClass('violet');
-            // }
-            // })
+            $(this).siblings().addClass('violet'); //sibler les fréres du carré
+
         });
 
         $('.losange').click(function() {

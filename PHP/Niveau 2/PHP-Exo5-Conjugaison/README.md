@@ -1,7 +1,8 @@
 PHP Exercice 5 - Conjugaison
 
 Enoncé :
-* Créez une fonction qui prend une string en paramètre. Ce paramètre sera un verbe régulier du premier groupe (finissant par "er" tels que parler, trier, chanter, coder, programmer, ...). Votre fonction doit conjuguer ce verbe au présent de l'indicatif et l'afficher à l'écran.
+* Créez une fonction qui prend une string en paramètre. Ce paramètre sera un verbe régulier du premier groupe 
+(finissant par "er" tels que parler, trier, chanter, coder, programmer, ...). Votre fonction doit conjuguer ce verbe au présent de l'indicatif et l'afficher à l'écran.
 
 # Contrainte
 * La chaîne passée en paramètre ne doit pas dépasser 15 caractères ni contenir d'espaces.

@@ -12,10 +12,9 @@
             echo("Le nombre choisi est invalide");
         }else{
             echo($nbr);
-        while($nbr != 1){
-            if($nbr<=0){
-            }
-            elseif($nbr%2 ==0){
+        while($nbr > 1){
+            
+            if($nbr%2 ==0){
                 $nbr = $nbr/2;
                 echo(" ".$nbr." ");
             }else{

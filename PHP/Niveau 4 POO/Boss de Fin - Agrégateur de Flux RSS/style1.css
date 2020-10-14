@@ -1,0 +1,57 @@
+body {
+display: flex;
+flex-direction: column;
+}
+
+img {
+max-width: 100%;
+}
+
+.articles {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+margin: auto;
+}
+
+.article {
+display: flex;
+flex-direction: column;
+font-size: 1rem;
+font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+padding: 2em;
+background-color: #a7a4a4;
+color: #fff;
+flex: 400px 1;
+margin: 1em;
+}
+
+.titre {
+margin-top: 0;
+margin-bottom: auto;
+padding-bottom: 1em;
+font-size: 2rem;
+color: rgb(247, 65, 65);
+}
+
+.lien {
+color: rgb(250, 134, 134);
+order: 2;
+margin: 1em auto 0;
+}
+
+.lien:visited {
+color: rgb(245, 195, 195);
+}
+
+.description {
+line-height: 1.5;
+height: 9rem;
+overflow: hidden;
+order: 1;
+}
+
+.datepub {
+font-size: 80%;
+}

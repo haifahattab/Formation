@@ -12,32 +12,27 @@
 </head>
 <body>
 <?php
-    try{
-    // Connexion à la base données
-        $bdd =new PDO('mysql:host=localhost; dbname=coordonnee; charset=utf8', 'root', '');
-    // Activation des erreurs PDO
-        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // mode de fetch par défaut : FETCH_ASSOC / FETCH_OBJ / FETCH_BOTH
-        $bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    }catch(PDOException $e) {
-        die('Erreur : ' . $e->getMessage());
-        }
-    //préparation de la requête et des variables
-        $sql = "INSERT INTO connexions (login,password) VALUES (:login,:password)";
+       $login = htmlspecialchars($_POST["login"]);
+       $isValidLogin = !empty($login);
 
-        $datas = array(':login'=>$_POST['login'], ':password'=>$_POST['pwd']);
-    //Execution de la requete
-    try{
-        $requete = $bdd -> prepare($sql) ;
-        $requete->execute($datas) ;
-    }catch(Exception $e){
-        // en cas d'erreur :
-        echo " Erreur ! ".$e->getMessage();
-        echo " Les datas : " ;
-        print_r($datas);
+       $password = htmlspecialchars($_POST["pwd"]);
+       $isValidPassword = !empty($password);
+
+       $isValidAll = $isValidLogin && $isValidPassword;
+
+       if (isset($_POST["send"])) {
+            if ($isValidAll){
+                $login = $_POST['login'];
+                $password = $_POST['pwd'];
+                $base = new PDO('mysql:host=localhost;dbname=coordonnee;charset=utf8', 'root', '');
+                $sql = "INSERT INTO Connexions(login,password)VALUES('$login','$password')"; 
+                $base -> query($sql);
+            }
+            else {echo "ERROR";}
+
     }
 ?>
-    <form action="login.php" method="post" class="form-group">
+    <form action="index.php" method="post" class="form-group">
     <div class="form-group">
         <label for="name">Login :</label>
         <input type="text" name="login" class="form-input"  require>

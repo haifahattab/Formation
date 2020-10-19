@@ -13,8 +13,8 @@
 <body>
 <?php
     try{
-        $bdd =new PDO('mysql:host=localhost;
-        dbname=coordonnee; charset=utf8', 'root', '');
+    // Connexion à la base données
+        $bdd =new PDO('mysql:host=localhost; dbname=coordonnee; charset=utf8', 'root', '');
     // Activation des erreurs PDO
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // mode de fetch par défaut : FETCH_ASSOC / FETCH_OBJ / FETCH_BOTH

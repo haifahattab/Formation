@@ -58,7 +58,7 @@ if (isset($_POST['confirm'])) {
     }
     else{ 
         if( $isValidfirstName && $isValidlastName && $isValidemail && $isValidpwd && $isValidinfo && $isValidconfirmpwd ){ 
-                    if ($password === $confirmpassword ) {
+           if ($password === $confirmpassword ) {
                         $firstName = $_POST['firstName'];
                         $lastName = $_POST['lastName'];
                         $email = $_POST['email'];
@@ -104,7 +104,8 @@ if (isset($_POST['confirm'])) {
 
      <div class="form-group">
         <label for="ipassword">Mot de passe:</label>
-        <input type="text" name="password" id="ipassword">
+        <input type="text" name="password" id="ipassword" value="<?php if (!preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ ", $pwd)) { echo?>">
+        <span>le mot de passe ne doit pas contenir un espace</span><?php } ?>
     </div>
     <div class="form-group">
         <label for="iconfirmpassword"> Confirmation :</label>

@@ -39,6 +39,8 @@ $isValidlastName = !empty($lastName);
 $password = htmlspecialchars($_POST["password"]);
 $isValidpwd = !empty($password);
 
+
+
 $confirmpassword = htmlspecialchars($_POST["confirmpassword"]);
 $isValidconfirmpwd = !empty($confirmpassword);
 
@@ -57,34 +59,63 @@ if (isset($_POST['confirm'])) {
         echo '</script>';
     }
     else{ 
+
         if( $isValidfirstName && $isValidlastName && $isValidemail && $isValidpwd && $isValidinfo && $isValidconfirmpwd ){ 
-           if ($password === $confirmpassword ) {
-                        $firstName = $_POST['firstName'];
-                        $lastName = $_POST['lastName'];
-                        $email = $_POST['email'];
-                        $password = $_POST['password'];
-                        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+            if (!preg_match ( "/^[a-zA-Z0-9_-]{8,40}$/i", $password)){
+                echo '<script type="text/javascript">';
+                echo 'alert(" Le mot de passe doit contenir au moins 6 caractéres et ne conteint pas despaces")';
+                echo  '</script>'; 
+            }
 
-                        $info = $_POST['info'];
-
-                        $base = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
-                        $sql = "INSERT INTO utilisateurs(nom,prenom,email,password,statut)VALUES('$firstName','$lastName','$email','$passwordHash','$info')"; 
-                        $base -> query($sql);
-                    } 
-                    else {
+           else if($password != $confirmpassword ) {
                                 echo '<script type="text/javascript">';
                                 echo 'alert("les mots de passe saisis ne sont pas identiques")';
-                                echo  '</script>';
-                        
-                    }
+                                echo  '</script>';         
+            } 
+            
+            else {
+
+              
+                $base = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
+
+                $queryReq = $base->prepare("SELECT email FROM utilisateurs WHERE email = :email");
+                $queryReq->bindParam(':email', $email);
+                $queryReq->execute();
+                $data = $queryReq->fetch();
+
+
+                    if (!$data){
+                            $firstName = $_POST['firstName'];
+                            $lastName = $_POST['lastName'];
+                            $email = $_POST['email'];
+                            $password = $_POST['password'];
+                            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+                            $info = $_POST['info'];
+
+                            $base = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
+                            $sql = "INSERT INTO utilisateurs(nom,prenom,email,password,statut)VALUES('$firstName','$lastName','$email','$passwordHash','$info')"; 
+                            $base -> query($sql);
+                    } 
+                    else 
+                    {
+                            echo '<script type="text/javascript">';
+                            echo 'alert("Cet utilisateur existe déja dans la base de données! ")';
+                            echo  '</script>';
+                    }    
+            }
+
         }
-        else{
-        echo '<script type="text/javascript">';
-        echo 'alert("Tous les champs sont obligatoires !")';
-        echo  '</script>';
+
+
+                    else{
+                    echo '<script type="text/javascript">';
+                    echo 'alert("Tous les champs sont obligatoires !")';
+                    echo  '</script>';
+                    }
+                
         }
     }
-}
     
 
 
@@ -104,8 +135,7 @@ if (isset($_POST['confirm'])) {
 
      <div class="form-group">
         <label for="ipassword">Mot de passe:</label>
-        <input type="text" name="password" id="ipassword" value="<?php if (!preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ ", $pwd)) { echo?>">
-        <span>le mot de passe ne doit pas contenir un espace</span><?php } ?>
+        <input type="text" name="password" id="ipassword" />
     </div>
     <div class="form-group">
         <label for="iconfirmpassword"> Confirmation :</label>
@@ -113,7 +143,7 @@ if (isset($_POST['confirm'])) {
     </div>
     <div class="form-group">
         <label for="imail">    Email :</label>
-        <input type="text" name="email" id="imail">
+        <input type="email" name="email" id="imail">
     </div>
    
     <div class="form-group">

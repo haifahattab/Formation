@@ -25,7 +25,8 @@
             echo "Vous n'étes pas inscris";
         }else if{
             $sql->bindParam(':password', $password);
-            
+            $sql->execute();
+            $data = $sql->fetch();
 
         }
     }

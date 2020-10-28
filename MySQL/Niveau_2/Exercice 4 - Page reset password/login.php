@@ -95,7 +95,7 @@
             <input type="text" name="password" id="ipassword">
         </div>
         <button name="submit">Valider</button>
-        <a href="#">Mot de passe oublié</a>
+        <a href="resetpassword.php">Mot de passe oublié</a>
         
     </form>
     

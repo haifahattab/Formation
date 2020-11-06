@@ -96,7 +96,6 @@
         </div>
         <button name="submit">Valider</button>
         <a href="resetpassword.php">Mot de passe oublié</a>
-        
     </form>
     
 </body>

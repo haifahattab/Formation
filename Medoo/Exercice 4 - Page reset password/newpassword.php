@@ -1,3 +1,23 @@
+<?php
+        if(isset($_POST['submit'])){
+            $password = $_POST['password'];
+            $passwordverif = $_POST['passwordverif'];
+            if(!empty($password) && !empty($passwordverif)){
+                if($password == $passwordverif){
+                session_start();
+                $mail = $_SESSION['email'];
+                $bdd = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
+                $sql = $bdd ->prepare('UPDATE connexions SET password = ? WHERE login = ?');
+                $sql -> execute(array($password, $mail));
+                //header('Location:login.php');
+                }else{
+                    echo "Les mots de passe ne sont pas identiques!";
+                }
+            }else{
+                echo "Remplir tous les champs!";
+            }
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +38,9 @@
     
 </head>
 <body>
-   
-    <form method="post" action="login.php">
+    <form method="post" action="#">
     <h3>Initialisation de mot de passe </h3>
-        <div class="form-group">
+        <div class="form-group"> 
             <label for="ipassword">Nouveau mot de passe :</label>
             <input type="text" name="password" id="ipassword">
         </div>
@@ -29,10 +48,8 @@
             <label for="ipasswordverif&">Confirmer le mot de passe :</label>
             <input type="text" name="passwordverif" id="ipasswordverif">
         </div>
-        <button name="submit">Valider</button>
-        
-        
+        <button name="submit">Valider</button>    
     </form>
-    
+ 
 </body>
 </html>

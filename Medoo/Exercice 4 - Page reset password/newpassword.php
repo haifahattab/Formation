@@ -1,22 +1,25 @@
 <?php
-        if(isset($_POST['submit'])){
-            $password = $_POST['password'];
-            $passwordverif = $_POST['passwordverif'];
-            if(!empty($password) && !empty($passwordverif)){
-                if($password == $passwordverif){
+    include_once("database.php");
+    if(isset($_POST['submit'])){
+        $password = $_POST['password'];
+        $passwordverif = $_POST['passwordverif'];
+        if(!empty($password) && !empty($passwordverif)){
+            if($password == $passwordverif){
                 session_start();
                 $mail = $_SESSION['email'];
-                $bdd = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
+                /*$bdd = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
                 $sql = $bdd ->prepare('UPDATE connexions SET password = ? WHERE login = ?');
-                $sql -> execute(array($password, $mail));
-                //header('Location:login.php');
-                }else{
+                $sql -> execute(array($password, $mail));*/
+                $database->update('connexions',['password'=>$password],
+                ['login'=>$mail]);
+                header('Location:login.php');
+            }else{
                     echo "Les mots de passe ne sont pas identiques!";
                 }
-            }else{
+        }else{
                 echo "Remplir tous les champs!";
             }
-        }
+    }
     ?>
 <!DOCTYPE html>
 <html lang="en">

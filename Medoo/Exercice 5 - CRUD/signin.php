@@ -9,49 +9,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-
-    form{
-        margin-left: 300px;
-        margin-top: 100px;
-    }
-    input  {
-    margin-left: 50px;
-    }
-    button{
-        margin-top: 50px;
-        margin-left: 300px;
-    }
-    </style>
+	<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 
 
 <?php
-include_once("Medoo.php");
-use Medoo\Medoo;
+require('database.php');
 
 if (isset($_POST['confirm'])) {
     $firstName = htmlspecialchars($_POST["firstName"]);
-$isValidfirstName = !empty($firstName);
+    $isValidfirstName = !empty($firstName);
 
-$lastName = htmlspecialchars($_POST["lastName"]);
-$isValidlastName = !empty($lastName);
+    $lastName = htmlspecialchars($_POST["lastName"]);
+    $isValidlastName = !empty($lastName);
 
-$password = htmlspecialchars($_POST["password"]);
-$isValidpwd = !empty($password);
+    $password = htmlspecialchars($_POST["password"]);
+    $isValidpwd = !empty($password);
 
 
 
-$confirmpassword = htmlspecialchars($_POST["confirmpassword"]);
-$isValidconfirmpwd = !empty($confirmpassword);
+    $confirmpassword = htmlspecialchars($_POST["confirmpassword"]);
+    $isValidconfirmpwd = !empty($confirmpassword);
 
-$email = htmlspecialchars($_POST["email"]);
-$isValidemail = !empty($email);
+    $email = htmlspecialchars($_POST["email"]);
+    $isValidemail = !empty($email);
 
-$info = htmlspecialchars($_POST["info"]);
-$isValidinfo = !empty($info);
+    $info = htmlspecialchars($_POST["info"]);
+    $isValidinfo = !empty($info);
 
     $condition = $_POST['condition'];
     if (empty($condition)){
@@ -70,13 +56,6 @@ $isValidinfo = !empty($info);
             
             else {
 
-                $database = new Medoo([
-                    'database_type' => 'mysql',
-                    'database_name' => 'niv2-bdd',
-                    'server' => 'localhost',
-                    'username' => 'root',
-                    'password' => '',
-                ]);
                 $bdd = $database->get('utilisateurs','email',[
                     'email'=>$email
                 ]);
@@ -96,6 +75,7 @@ $isValidinfo = !empty($info);
                                 'password'=> $passwordHash,
                                 'statut' => $info,
                             ]);
+                            header('Location:login.php');
                     } 
                     else 
                     {
@@ -107,54 +87,50 @@ $isValidinfo = !empty($info);
 
         }
 
-
                     else{
                     echo '<script type="text/javascript">';
                     echo 'alert("Tous les champs sont obligatoires !")';
                     echo  '</script>';
-                    }
-                
+                    }    
         }
     }
     
-
-
 ?>
 
  
- <form action="signin.php" method="post" class="form-group">
- <h2> S'inscrire </h2> <br>
+ <form action="signin.php" method="post" class="form-group p-3 mb-5 bg-dark rounded">
+ <h1> Inscription </h1>
     <div class="form-group">
         <label for="iprenom">Prenom :</label>
-        <input type="text" name="firstName" id="iprenom">
+        <input type="text" class="form-control" name="firstName" id="iprenom" placeholder="XXXX">
     </div>
     <div class="form-group">
         <label for="iname">Nom :</label>
-        <input type="text" name="lastName" id="nom">
+        <input type="text" class="form-control" name="lastName" id="nom" placeholder="XXXX">
     </div>
 
      <div class="form-group">
         <label for="ipassword">Mot de passe:</label>
-        <input type="text" name="password" id="ipassword" />
+        <input type="password" class="form-control" name="password" id="ipassword" placeholder="XXXXXXXX" />
     </div>
     <div class="form-group">
-        <label for="iconfirmpassword"> Confirmation :</label>
-        <input type="text" name="confirmpassword">
+        <label for="iconfirmpassword">Confirmation :</label>
+        <input type="password" class="form-control" name="confirmpassword" placeholder="XXXX">
     </div>
     <div class="form-group">
-        <label for="imail">    Email :</label>
-        <input type="email" name="email" id="imail">
+        <label for="imail">Email :</label>
+        <input type="email" class="form-control" name="email" id="imail" placeholder="XXXX@XXXX.XXX">
     </div>
    
     <div class="form-group">
         <p>Statut :</p>
         <input type="radio" id="ipro" name="info" value="professionnel" >
-        <label for="professionnel">Professionnel</label><br>
+        <label for="ipro">Professionnel</label><br>
         <input type="radio" id="ipart" name="info" value="particulier">
-        <label for="particulier">Particulier</label> <br>
+        <label for="ipart">Particulier</label> <br>
   
-      <input style="margin-top:50px" type="checkbox" name="condition"> Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement.<br>
-    <button name="confirm"> Valider</button>  
+      <input type="checkbox" name="condition"> Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement.<br>
+    <button name="confirm">Valider</button>  
     </div>  
     </form>
 </body>

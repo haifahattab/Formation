@@ -1,38 +1,43 @@
-<?php        
+<?php
+    session_start();
+    include_once("database.php");
+
     if (isset($_POST['submit']))
         {
             $login = $_POST['login'];
             $password = $_POST['password'];
             if (!empty($login) && !empty($password))
                 {
-                    $bdd = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
+                    $bdd= $database->get('connexions','*',['login'=>$login,
+                    'password'=>$password,
+                    ]);
+                    /*$bdd = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
                     $req = $bdd->prepare('SELECT * FROM connexions WHERE login = ? AND password = ?');
                     $req-> execute(array(
                         $login,
                         $password));
-                    $resultat = $req->fetch(PDO::FETCH_ASSOC);
-                    session_start();
-                    if ($resultat || password_verify($password, $resultat['password']))
+                    $resultat = $req->fetch(PDO::FETCH_ASSOC);*/
+                    if ($bdd || password_verify($password, $bdd['password']))
                     {
                         $_SESSION["login"] = $login;
-                        header("location: home.php");
+                        header('Location:home.php');
                     }
                     else
                     {
                       
-                        if(!isset($_SESSION['nombre']))
+                        if(!isset($tentative))
                             {
                             // Initialisation de la variable
-                            $_SESSION['nombre'] = 1;
+                            $tentative = 5;
                             // Blocage pendant 15 min
                             $_SESSION['timestamp_limite'] = time() + 60*15;
                             }
-                        if($_SESSION['nombre'] <= 5)
+                        if($tentative <= 5)
                         {
+                            $tentative--;
                             echo '<script type="text/javascript">';
-                            echo 'alert("Cet utilisateur existe déja dans la base de données! ")';
+                            echo 'alert("Mots de passe incorrect! il vous reste".$tentative."tentative")';
                             echo  '</script>';                            
-                            $_SESSION['nombre']++;
                         }
                         // Si on a dépassé les 5 tentatives
                         else
@@ -41,7 +46,7 @@
                             if(!isset($_COOKIE['marqueur']))
                                     {
                                     $timestamp_marque = time() + 60; // On le marque pendant une minute
-                                                $cookie_vie = time() + 606024; // Durée de vie de 24 heures pour le décalage horaire
+                                    $cookie_vie = time() + 606024; // Durée de vie de 24 heures pour le décalage horaire
                                     setcookie("marqueur", $timestamp_marque, $cookie_vie);
                                     }
 
@@ -95,7 +100,7 @@
             <input type="text" name="password" id="ipassword">
         </div>
         <button name="submit">Valider</button>
-        <a href="resetpassword.php">Mot de passe oublié</a>
+        <a href="http://localhost/medoo/Medoo/Exercice%204%20-%20Page%20reset%20password/resetpassword.php">Mot de passe oublié</a>
         
     </form>
     

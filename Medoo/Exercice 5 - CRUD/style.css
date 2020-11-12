@@ -1,0 +1,68 @@
+form {
+    margin-top: 100px;
+    margin-left: 30%;
+    margin-right: 30%;
+    color: white;
+    font-size: 15px;
+    box-shadow: 5px 5px 5px violet;
+}
+
+input {
+    box-shadow: 3px 3px 3px black;
+}
+
+h1 {
+    color: violet;
+    font-size: 20px;
+}
+
+button {
+    background-color: violet;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    width: 70px;
+    height: 40px;
+    box-shadow: 5px 5px 5px black;
+    border-radius: 10px;
+    margin-left: 20%;
+    margin-top: 4%;
+}
+
+input:required {
+    background: url(asterix.png) 98% center no-repeat;
+}
+
+input:focus:invalid {
+    border-color: red;
+    background-image: none;
+}
+
+.erreur {
+    border-color: red;
+}
+
+@media screen and (min-width: 700px) {
+    form {
+        font-size: 20px;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    button {
+        font-size: 20px;
+        width: 120px;
+        border-radius: 30px;
+        height: 50px;
+        margin-left: 30%;
+    }
+    .table1 {
+        margin: auto;
+        width: 70%;
+    }
+    .link {
+        margin-right: 100px;
+        color: violet;
+        font-size: 25px;
+    }
+}

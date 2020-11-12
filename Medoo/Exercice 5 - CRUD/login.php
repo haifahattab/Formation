@@ -1,15 +1,14 @@
 <?php
     session_start();
-    include_once("database.php");
+    require("database.php");
 
     if (isset($_POST['submit']))
         {
-            $login = $_POST['login'];
+            $email = $_POST['email'];
             $password = $_POST['password'];
-            if (!empty($login) && !empty($password))
+            if (!empty($email) && !empty($password))
                 {
-                    $bdd= $database->get('connexions','*',['login'=>$login,
-                    'password'=>$password,
+                    $bdd= $database->get('utilisateurs','*',['email'=>$email
                     ]);
                     /*$bdd = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
                     $req = $bdd->prepare('SELECT * FROM connexions WHERE login = ? AND password = ?');
@@ -19,7 +18,7 @@
                     $resultat = $req->fetch(PDO::FETCH_ASSOC);*/
                     if ($bdd || password_verify($password, $bdd['password']))
                     {
-                        $_SESSION["login"] = $login;
+                        $_SESSION["email"] = $email;
                         header('Location:home.php');
                     }
                     else
@@ -79,28 +78,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-       form{
-            margin-left: 40%;
-            margin-top: 10%;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"/>
+  
     
 </head>
 <body>
    
-    <form method="post" action="login.php">
-    <h3>Inscription</h3>
+    <form method="post" action="login.php" class="Form-group p-3 mb-5 bg-dark rounded">
+    <h1>Se connecter</h1>
         <div class="form-group">
-            <label for="ilogin">Login :</label>
-            <input type="email" name="login" id="ilogin" placeholder="melanie@yahoo.com">
+            <label for="imail">Login </label>
+            <input type="email" class="form-control" name="email" id="imail" placeholder="XXXX@XXXX.XXX">
         </div>
         <div class="form-group">
-            <label for="ipassword">Mot de passe :</label>
-            <input type="text" name="password" id="ipassword">
+            <label for="ipassword">Mot de passe </label>
+            <input type="text" class="form-control" name="password" id="ipassword" placeholder="XXXXXXXX">
         </div>
-        <button name="submit">Valider</button>
-        <a href="http://localhost/medoo/Medoo/Exercice%204%20-%20Page%20reset%20password/resetpassword.php">Mot de passe oublié</a>
+        <button name="submit" class="mb-2">Valider</button><br>
+        <a href="http://localhost/medoo/Medoo/Exercice%204%20-%20Page%20reset%20password/resetpassword.php">Mot de passe oublié</a><br>
+        <a href="signin.php">S'inscrire</a>
         
     </form>
     

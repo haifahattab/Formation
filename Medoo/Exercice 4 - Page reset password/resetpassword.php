@@ -25,6 +25,7 @@
     <button name="envoyer">Envoyer</button>
     </form>
     <?php
+    include_once("database.php");
     session_start();
     if(isset($_GET['section'])){
         $section = htmlspecialchars($_GET['section']);
@@ -33,31 +34,29 @@
     }
     if(isset($_POST['envoyer'])){
         $email = $_POST['email'];
-        $bdd = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
+        /*$bdd = new PDO('mysql:host=localhost;dbname=niv2-bdd;charset=utf8', 'root', '');
         $sql = $bdd->prepare("SELECT * FROM connexions WHERE login = ?");
         $sql->execute(array($email));
-        $result = $sql->fetch(PDO::FETCH_ASSOC);
-        if($result){
-            $_SESSION["email"] = $email;
+        $result = $sql->fetch(PDO::FETCH_ASSOC);*/
+        $bdd = $database->get('connexions','*',['login'=>$email]);
+        if($bdd !=false ){
+            $_SESSION["email"] = $bdd['login'];
+            $mail = $_SESSION["email"];
             $token = "";
             for($i=0; $i<8; $i++){
                 $token .= mt_rand(0,9);
             }
+            /*
             $mail_exist = $bdd->prepare('SELECT * FROM connexions where login = ?');
             $mail_exist->execute(array($email));
-            $mail_exist = $mail_exist->rowCount();
-            if($mail_exist ==1){
-                $base = $bdd->prepare('UPDATE connexions SET code = ? WHERE login = ?');
-                $base->execute(array($token, $email));
-                $req= $bdd->prepare('SELECT * FROM connexions WHERE login = ?');
-                $req->execute((array($email)));
-                $resul = $req->fetch(PDO::FETCH_ASSOC);
-                $recup_code = $resul['code'];
-                $_SESSION['code'] = $recup_code;
+            $mail_exist = $mail_exist->rowCount();*/
+            $mail_exist = $database->count('connexions',['login'=>$email]);
+            if($mail_exist==1){
+                $base = $database->update('connexions',['code'=>$token], ['login' =>$email]);
             }else{
 
-                $base = $bdd->prepare('INSERT INTO connexions(login, code) VALUES (?, ?)');
-                $base->execute(array($email, $token));
+                $base = $database->insert('connexions',['login'=>$email,
+                    'code'=>$token]);
 
             }
             

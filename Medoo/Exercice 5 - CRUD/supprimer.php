@@ -5,7 +5,6 @@
             $id = $_GET['id'];
             $database->delete('utilisateurs',
                                 ["id"=>$id]);
-
             header("Location:home.php");
         }
 ?>

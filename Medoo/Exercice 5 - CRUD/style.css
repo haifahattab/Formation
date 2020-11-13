@@ -1,32 +1,56 @@
-form {
-    margin-top: 100px;
+body {
+    background: no-repeat url('images/fond.jpg');
+    background-size: cover;
+    position: relative;
+}
+
+.form {
     margin-left: 30%;
     margin-right: 30%;
     color: white;
+    background-color: rgb(58, 54, 54, 0.6);
     font-size: 15px;
-    box-shadow: 5px 5px 5px violet;
 }
 
-input {
-    box-shadow: 3px 3px 3px black;
+.formdialo {
+    background-color: rgb(58, 54, 54, 0.5);
+    color: white;
+}
+
+.input {
+    background-color: rgba(44, 41, 41, 0.7);
+    border-color: rgba(36, 34, 34, 0.7);
 }
 
 h1 {
-    color: violet;
+    color: rgb(86, 167, 243);
     font-size: 20px;
+    text-align: center;
 }
 
-button {
-    background-color: violet;
+.button {
+    background-color: rgb(86, 167, 243);
     color: white;
     font-weight: bold;
     font-size: 15px;
-    width: 70px;
+    width: 100px;
     height: 40px;
-    box-shadow: 5px 5px 5px black;
-    border-radius: 10px;
-    margin-left: 20%;
+    border-radius: 20px;
+    margin-left: 40%;
     margin-top: 4%;
+}
+
+.button:hover {
+    color: rgb(86, 167, 243);
+    background-color: white;
+}
+
+.tablec {
+    background-color: rgb(58, 54, 54, 0.7);
+}
+
+.tablec td {
+    color: black;
 }
 
 input:required {
@@ -42,19 +66,25 @@ input:focus:invalid {
     border-color: red;
 }
 
+.logo {
+    width: 120px;
+    height: 70px;
+    margin-left: 45%;
+    margin-top: 10px;
+}
+
+header p {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
 @media screen and (min-width: 700px) {
     form {
         font-size: 20px;
     }
     h1 {
         font-size: 30px;
-    }
-    button {
-        font-size: 20px;
-        width: 120px;
-        border-radius: 30px;
-        height: 50px;
-        margin-left: 30%;
     }
     .table1 {
         margin: auto;

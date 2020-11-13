@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-
 
 <?php
 require('database.php');
-
+include('header.html');
 if (isset($_POST['confirm'])) {
     $firstName = htmlspecialchars($_POST["firstName"]);
     $isValidfirstName = !empty($firstName);
@@ -27,8 +11,6 @@ if (isset($_POST['confirm'])) {
 
     $password = htmlspecialchars($_POST["password"]);
     $isValidpwd = !empty($password);
-
-
 
     $confirmpassword = htmlspecialchars($_POST["confirmpassword"]);
     $isValidconfirmpwd = !empty($confirmpassword);
@@ -96,42 +78,56 @@ if (isset($_POST['confirm'])) {
     }
     
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
- 
- <form action="signin.php" method="post" class="form-group p-3 mb-5 bg-dark rounded">
+ <form action="signin.php" method="post" class="form-group p-3 mb-5 form rounded">
  <h1> Inscription </h1>
     <div class="form-group">
         <label for="iprenom">Prenom :</label>
-        <input type="text" class="form-control" name="firstName" id="iprenom" placeholder="XXXX">
+        <input type="text" class="form-control input" name="firstName" id="iprenom" placeholder="XXXX">
     </div>
     <div class="form-group">
         <label for="iname">Nom :</label>
-        <input type="text" class="form-control" name="lastName" id="nom" placeholder="XXXX">
+        <input type="text" class="form-control input" name="lastName" id="nom" placeholder="XXXX">
     </div>
 
      <div class="form-group">
         <label for="ipassword">Mot de passe:</label>
-        <input type="password" class="form-control" name="password" id="ipassword" placeholder="XXXXXXXX" />
+        <input type="password" class="form-control input" name="password" id="ipassword" placeholder="XXXXXXXX" />
     </div>
     <div class="form-group">
         <label for="iconfirmpassword">Confirmation :</label>
-        <input type="password" class="form-control" name="confirmpassword" placeholder="XXXX">
+        <input type="password" class="form-control input" name="confirmpassword" placeholder="XXXXXXXX">
     </div>
     <div class="form-group">
         <label for="imail">Email :</label>
-        <input type="email" class="form-control" name="email" id="imail" placeholder="XXXX@XXXX.XXX">
+        <input type="email" class="form-control input" name="email" id="imail" placeholder="XXXX@XXXX.XXX">
     </div>
    
     <div class="form-group">
         <p>Statut :</p>
-        <input type="radio" id="ipro" name="info" value="professionnel" >
+        <input type="radio" id="ipro" name="info" class="input" value="professionnel" >
         <label for="ipro">Professionnel</label><br>
-        <input type="radio" id="ipart" name="info" value="particulier">
+        <input type="radio" id="ipart" name="info" class="input" value="particulier">
         <label for="ipart">Particulier</label> <br>
   
-      <input type="checkbox" name="condition"> Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement.<br>
-    <button name="confirm">Valider</button>  
+      <input type="checkbox" name="condition" class="input"> Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement.<br>
+    <button name="confirm" class="button">Valider</button>  
     </div>  
     </form>
+    <?php include("footer.html");?>
 </body>
 </html>

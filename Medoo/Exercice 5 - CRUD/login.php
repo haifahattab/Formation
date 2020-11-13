@@ -1,7 +1,7 @@
 <?php
     session_start();
     require("database.php");
-
+    include("header.html");
     if (isset($_POST['submit']))
         {
             $email = $_POST['email'];
@@ -84,21 +84,22 @@
 </head>
 <body>
    
-    <form method="post" action="login.php" class="Form-group p-3 mb-5 bg-dark rounded">
+    <form method="post" action="login.php" class="Form-group p-3 mb-5 rounded form">
     <h1>Se connecter</h1>
         <div class="form-group">
             <label for="imail">Login </label>
-            <input type="email" class="form-control" name="email" id="imail" placeholder="XXXX@XXXX.XXX">
+            <input type="email" class="form-control input" name="email" id="imail" placeholder="XXXX@XXXX.XXX">
         </div>
         <div class="form-group">
             <label for="ipassword">Mot de passe </label>
-            <input type="text" class="form-control" name="password" id="ipassword" placeholder="XXXXXXXX">
+            <input type="password" class="form-control input" name="password" id="ipassword" placeholder="XXXXXXXX">
         </div>
-        <button name="submit" class="mb-2">Valider</button><br>
-        <a href="http://localhost/medoo/Medoo/Exercice%204%20-%20Page%20reset%20password/resetpassword.php">Mot de passe oublié</a><br>
+        <button name="submit" class="mb-2 mr-0 button">Valider</button><br>
+        <a href="resetpassword.php">Mot de passe oublié</a><br>
         <a href="signin.php">S'inscrire</a>
         
     </form>
     
+    <?php include("footer.html");?>
 </body>
 </html>
